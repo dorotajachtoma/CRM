@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Status {
+public class Priority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +20,10 @@ public class Status {
 
     @Setter
     @Getter
-    private boolean avaible;
+    private String name;
 
     @Setter
     @Getter
-    private int sortNumber;
-
+    private boolean avaible;
 
 }
