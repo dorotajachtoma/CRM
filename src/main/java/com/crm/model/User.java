@@ -3,16 +3,15 @@ package com.crm.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter
     @Getter
     private Long id;
 
@@ -32,6 +31,11 @@ public class User {
     @Setter
     @Getter
     private String password;
+
+    @Setter
+    @Getter
+    @ManyToMany
+    private Set<Project> projects;
 
 
 }

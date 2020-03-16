@@ -16,7 +16,6 @@ public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter
     @Getter
     private Long id;
 
@@ -35,7 +34,7 @@ public class Project {
     @Getter
     private String identifier;
 
-    @OneToMany
+    @ManyToMany
     @Setter
     @Getter
     private Set<User> users;
@@ -56,13 +55,13 @@ public class Project {
         this.identifier = identifier;
     }
 
-    public void makeIdentifier(){
+    public String makeIdentifier(){
         Pattern pattern = Pattern.compile("ż|ź|ł|ą|ę|ł|ć|ś|ń|ó");
         Matcher matcher = pattern.matcher(identifier);
         if(matcher.find() || identifier.contains(" ")){
             identifier.replace("ż|ź|ł|ą|ę|ł|ć|ś|ń|ó", "");
             identifier.replace(" ", "-");
         }
-
+        return  identifier;
     }
 }
