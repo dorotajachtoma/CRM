@@ -6,6 +6,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Entity
 @Table(name = "projects")
@@ -28,6 +31,38 @@ public class Project {
     private String description;
 
 
+    @Setter
+    @Getter
+    private String identifier;
+
+    @OneToMany
+    @Setter
+    @Getter
+    private Set<User> users;
+
+    @Setter
+    @Getter
+    private boolean avaible;
 
 
+
+    public String getIdentifier() {
+        makeIdentifier();
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        makeIdentifier();
+        this.identifier = identifier;
+    }
+
+    public void makeIdentifier(){
+        Pattern pattern = Pattern.compile("ż|ź|ł|ą|ę|ł|ć|ś|ń|ó");
+        Matcher matcher = pattern.matcher(identifier);
+        if(matcher.find() || identifier.contains(" ")){
+            identifier.replace("ż|ź|ł|ą|ę|ł|ć|ś|ń|ó", "");
+            identifier.replace(" ", "-");
+        }
+
+    }
 }
