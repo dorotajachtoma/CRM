@@ -53,7 +53,8 @@ public class Task {
     private Set<User> users;
 
 
-
+    public Task() {
+    }
 
     private void getCurrentUsers(){
 

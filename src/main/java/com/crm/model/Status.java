@@ -25,5 +25,6 @@ public class Status {
     @Getter
     private int sortNumber;
 
-
+    public Status() {
+    }
 }

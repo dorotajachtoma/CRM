@@ -25,4 +25,7 @@ public class Priority {
     @Getter
     private boolean avaible;
 
+
+    public Priority() {
+    }
 }

@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name= "user")
 public class User {
 
     @Id
@@ -34,8 +35,9 @@ public class User {
 
     @Setter
     @Getter
-    @ManyToMany
+    @ManyToMany(mappedBy = "users",fetch = FetchType.EAGER)
     private Set<Project> projects;
 
-
+    public User() {
+    }
 }

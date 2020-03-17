@@ -34,9 +34,10 @@ public class Project {
     @Getter
     private String identifier;
 
-    @ManyToMany
     @Setter
     @Getter
+    @ManyToMany
+    @JoinTable(name  = "projects_user")
     private Set<User> users;
 
     @Setter
@@ -63,5 +64,8 @@ public class Project {
             identifier.replace(" ", "-");
         }
         return  identifier;
+    }
+
+    public Project() {
     }
 }
